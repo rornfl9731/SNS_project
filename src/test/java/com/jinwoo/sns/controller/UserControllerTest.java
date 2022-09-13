@@ -3,6 +3,7 @@ package com.jinwoo.sns.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jinwoo.sns.controller.request.UserJoinRequest;
 import com.jinwoo.sns.controller.request.UserLoginRequest;
+import com.jinwoo.sns.exception.ErrorCode;
 import com.jinwoo.sns.exception.SnsApplicationException;
 import com.jinwoo.sns.model.User;
 import com.jinwoo.sns.service.UserService;
@@ -55,7 +56,7 @@ public class UserControllerTest {
         String password = "password";
 
         // TODO : mocking
-        when(userService.join(userName,password)).thenThrow(new SnsApplicationException());
+        when(userService.join(userName,password)).thenThrow(new SnsApplicationException(ErrorCode.DUPLICATED_USER_NAME,""));
 
 
 
@@ -89,7 +90,7 @@ public class UserControllerTest {
         String password = "password";
 
         // TODO : mocking
-        when(userService.login(userName,password)).thenThrow(new SnsApplicationException());
+        when(userService.login(userName,password)).thenThrow(new SnsApplicationException(ErrorCode.USER_NOT_FOUND));
 
         mockMvc.perform(post("/api/v1/users/login")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -105,7 +106,7 @@ public class UserControllerTest {
         String password = "password";
 
         // TODO : mocking
-        when(userService.login(userName,password)).thenThrow(new SnsApplicationException());
+        when(userService.login(userName,password)).thenThrow(new SnsApplicationException(ErrorCode.INVALID_PASSWORD));
 
         mockMvc.perform(post("/api/v1/users/login")
                         .contentType(MediaType.APPLICATION_JSON)
