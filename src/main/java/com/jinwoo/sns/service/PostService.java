@@ -82,6 +82,6 @@ public class PostService {
         UserEntity userEntity = userEntityRepository.findByUserName(username).orElseThrow(()->
                 new SnsApplicationException(ErrorCode.USER_NOT_FOUND,String.format("%s not found",username)));
 
-        return postEntityRepository.findAllBy(userEntity,pageable).map(Post::fromEntity);
+        return postEntityRepository.findAllByUser(userEntity,pageable).map(Post::fromEntity);
     }
 }
