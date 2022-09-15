@@ -1,6 +1,9 @@
 # SNS_project
 SNS 와 같은 서비스 만들기
 
+### 개발 스택
+JAVA SPRING BOOT / DB POSTGRESQL / 캐싱DB REDIS / 메세징큐 KAFKA
+
 
 ## 회원가입
 ![image](https://user-images.githubusercontent.com/20215427/190119843-d787f796-51a4-46bf-a147-21e69bbb8af5.png)
